@@ -1,37 +1,60 @@
+// import { collection, doc, setDoc } from "firebase/firestore";
 import { useState, useEffect } from "react";
-import { fbStorage, fbStorageRef, fbUploadBytes, fbUploadBytesResumable, fbGetDownloadURL } from '../firebase/config';
+import { 
+    fbStorage,
+    fbStorageRef, 
+    fbUploadBytesResumable, 
+    fbGetDownloadURL, 
+    fbFirestore, 
+    fbCollection, 
+    fbAddDoc, 
+    timestamp 
+} from '../firebase/config';
 
 const useStorage = (file) => {
-
     const [progress, setProgress] = useState(0)
     const [error, setError] = useState(null)
     const [url, setUrl] = useState(null)
 
     useEffect(() => {
 
-        const storageRef = fbStorageRef(fbStorage, "photo-gallery-reactjs/"+file.name);
+        const storageRef = fbStorageRef(
+            fbStorage, 
+            "photo-gallery-reactjs/"+file.name
+            );
+
         const uploadTask = fbUploadBytesResumable(storageRef, file);
 
-        const metadata = {
-            contentType: 'image/jpeg',
-        }
-        
-        fbUploadBytes(storageRef, file, metadata)
-        
         uploadTask.on('state_changed',
             (snapshot) => {
-                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                console.log("SNAPSHOT: ", snapshot);
+                const progress = (
+                    snapshot.bytesTransferred / snapshot.totalBytes
+                    ) * 100;
                 setProgress(progress)
             }, (error) => {
                 setError(error)
             }, () => {
                 fbGetDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                    const createdAt = timestamp();
+                    const fileName = uploadTask.snapshot.ref.name;
+                    fbAddDoc(fbCollection(fbFirestore, "images"), {
+                        downloadURL, createdAt, fileName
+                    })
                     setUrl(downloadURL)
+                    // is equal to :
+                    // const aNewRef = doc(collection(fbFirestore, "images"));
+                    // setDoc(aNewRef, {
+                    //     downloadURL, createdAt, fileName
+                    // })
+                    // setUrl(downloadURL)
+                    // console.log("abcdef...");
                 })
             }
         )
-    }, [file])
 
+    }, [file])
+    console.log("URL : ", url)
     return { progress, url, error }
 
 }
