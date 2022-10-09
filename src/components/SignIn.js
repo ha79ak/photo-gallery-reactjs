@@ -50,7 +50,7 @@ const SignIn = () => {
         type='Submit' 
         variant="contained" 
         fullWidth 
-        sx={{mt: 2, bgcolor:"#589a9f" }}
+        sx={{mt: 2, bgcolor:"#589a9f", "&:hover": {backgroundColor: '#efb6b2'}}}
       >Sign In
       </Button>
     <Box 
@@ -61,8 +61,8 @@ const SignIn = () => {
         mt: 2
       }}
     >
-      <Link sx={{color:"#589a9f"}}>Forgot Password?</Link>
-      <Link sx={{color:"#589a9f"}}>Don't have an account ? Sign Up</Link>
+      <Link sx={{color:"#589a9f", "&:hover": {color: '#efb6b2'}}}>Forgot Password?</Link>
+      <Link sx={{color:"#589a9f", "&:hover": {color: '#efb6b2'}}}>Don't have an account ? Sign Up</Link>
       </Box>
     </Box>
   </Container>
