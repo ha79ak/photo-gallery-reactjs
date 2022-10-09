@@ -40,20 +40,20 @@ label input{
   width: 0;
   opacity: 0;
 }
-label{
+/* label{
   display: block;
   width: 30px;
   height: 30px;
-  border: 1px solid #75b9be;
+  border: 1px solid #75b9be; */
   /* var(--primary); */
-  border-radius: 50%;
+  /* border-radius: 50%;
   margin: 10px auto;
   line-height: 30px;
-  color: #75b9be;
+  color: #75b9be; */
   /* var(--primary); */
-  font-weight: bold;
+  /* font-weight: bold;
   font-size: 24px;
-}
+} */
 label:hover{
   background: #75b9be;
   /* var(--primary); */
