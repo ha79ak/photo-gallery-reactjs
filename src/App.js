@@ -6,6 +6,7 @@ import UploadForm from './components/UploadForm';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
 import { fbAuth, fbSignOut } from './firebase/config';
+import Router from './config/router';
 
 function App() {
   const [enlargedImg, setEnlargedImg] = useState(null)
@@ -16,8 +17,8 @@ function App() {
   // }
   return (
     <div className="App">
-      
-      <Title />
+      <Router />
+      {/* <Title /> */}
       {/* {kullanici && kullanici.currentUser.email == "ha79ak@gmail.com" && <SignUp />}
       {kullanici && <button
       onClick={
@@ -25,9 +26,10 @@ function App() {
       }
       >Signout</button>} */}
       {/* <SignIn /> */}
-      <UploadForm />
-      <ImageGrid setEnlargedImg={setEnlargedImg} />
-      {enlargedImg && <Modal enlargedImg={enlargedImg} setEnlargedImg={setEnlargedImg} />}
+      {/* <UploadForm /> */}
+      {/* <ImageGrid setEnlargedImg={setEnlargedImg} /> */}
+      {/* {enlargedImg && <Modal enlargedImg={enlargedImg} setEnlargedImg={setEnlargedImg} />} */}
+      
     </div>
   );
 }

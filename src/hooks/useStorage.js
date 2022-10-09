@@ -42,19 +42,17 @@ const useStorage = (file) => {
                         downloadURL, createdAt, fileName
                     })
                     setUrl(downloadURL)
-                    // is equal to :
+                    // // is equal to :
                     // const aNewRef = doc(collection(fbFirestore, "images"));
                     // setDoc(aNewRef, {
                     //     downloadURL, createdAt, fileName
                     // })
                     // setUrl(downloadURL)
-                    // console.log("abcdef...");
                 })
             }
         )
 
     }, [file])
-    console.log("URL : ", url)
     return { progress, url, error }
 
 }

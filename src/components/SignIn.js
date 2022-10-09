@@ -3,17 +3,17 @@ import { signIn } from '../firebase/signInAndSignUp'
 
 const SignIn = () => {
 
-    useEffect(() => {
-        signIn("ha79ak@gmail.com", "hEllo1!World")
-        .then(() => {
-            console.log("Kullanici giris yapti")
-        })
-        .catch((e) => {
-            console.log("Giriste Hata!.. ", (e));
-        })
-    }, [])
+    // useEffect(() => {
+    //     signIn("ha79ak@gmail.com", "hEllo1!World")
+    //     .then(() => {
+    //         console.log("Kullanici giris yapti")
+    //     })
+    //     .catch((e) => {
+    //         console.log("Giriste Hata!.. ", (e));
+    //     })
+    // }, [])
   return (
-    <div>signIn</div>
+    <div>Hi, signIn</div>
   )
 }
 
