@@ -2,9 +2,11 @@ import { Box, TextField, CssBaseline, Button, Container, Link, Avatar, Typograph
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined"
 import { useSelector, useDispatch } from 'react-redux'
 import { changeName, changeEmail, changePassword, register } from '../redux/authSlice'
+import {useNavigate} from 'react-router-dom';
 
 const SignUp = () => {
-  
+  const navigate = useNavigate();
+
   const name = useSelector((state) => state.auth.name)
   const email = useSelector((state) => state.auth.email)
   const password = useSelector((state) => state.auth.password)
@@ -20,6 +22,7 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     dispatch(register({name, email, password}))
+    navigate('/', {replace: true});
   }
   return (
     <>
@@ -38,29 +41,35 @@ const SignUp = () => {
       <TextField 
         fullWidth 
         margin="normal" 
-        label="Name" 
+        // label="Name"
+        placeholder='Name' 
         required 
         autoComplete="name" 
         autoFocus
         value={name}
         onChange={handleNameChange}
+        error={error}
       />
       <TextField 
         fullWidth 
         margin="normal" 
-        label="Email" 
+        // label="Email"
+        placeholder='Email'
         required
         value={email}
         onChange={handleEmailChange}
+        error={error}
       />
-      <TextField 
+      <TextField
         fullWidth 
         margin="normal" 
-        label="Password" 
+        // label="Password"
+        placeholder='Password'
         required 
         type="password"
         value={password}
         onChange={handlePasswordChange}
+        error={error}
       />
       <Button 
         type='Submit' 

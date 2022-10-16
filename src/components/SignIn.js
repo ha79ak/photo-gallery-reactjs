@@ -37,21 +37,25 @@ const SignIn = () => {
       <TextField 
         fullWidth 
         margin="normal" 
-        label="Email" 
+        // label="Email"
+        placeholder='Email'
         required 
         autoComplete="email" 
         autoFocus
         value={email}
         onChange={handleEmailChange}
+        error={error}
       />
       <TextField 
         fullWidth 
         margin="normal" 
-        label="Password" 
+        // label="Password"
+        placeholder='Password'
         required 
         type="password"
         value={password}
         onChange={handlePasswordChange}
+        error={error}
       />
       <Button 
         type='Submit' 

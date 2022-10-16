@@ -16,9 +16,10 @@ body{
   margin: 0 auto;
 }
 .title h1{
+  text-align: center;
   color: #75b9be;
   /* var(--primary); */
-  font-size: 1.2rem;
+  font-size: 2.5rem;
   letter-spacing: 2px;
   font-weight: normal;
 }
@@ -40,20 +41,20 @@ label input{
   width: 0;
   opacity: 0;
 }
-/* label{
+label{
   display: block;
   width: 30px;
   height: 30px;
-  border: 1px solid #75b9be; */
+  border: 1px solid #75b9be;
   /* var(--primary); */
-  /* border-radius: 50%;
+  border-radius: 50%;
   margin: 10px auto;
   line-height: 30px;
-  color: #75b9be; */
-  /* var(--primary); */
-  /* font-weight: bold;
+  color: #75b9be;
+  /* var(--primary);  */
+  font-weight: bold;
   font-size: 24px;
-} */
+}
 label:hover{
   background: #75b9be;
   /* var(--primary); */
@@ -83,11 +84,12 @@ label:hover{
 }
 .img-wrap{
   overflow: hidden;
-  height: 0;
+  /* height: 10px; */
   padding: 50% 0;
   /* padding controls height, will always be perfectly square regardless of width */
   position: relative;
   opacity: 0.8;
+  width: 90%;
 }
 .img-wrap img{
   min-width: 100%;
@@ -114,4 +116,11 @@ label:hover{
   margin: 60px auto;
   box-shadow: 3px 5px 7px rgba(0,0,0,0.5);
   border: 3px solid white;
+}
+
+a:link, a:visited {
+  color: #589a9f;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
 }
