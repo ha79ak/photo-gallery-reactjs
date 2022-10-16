@@ -1,30 +1,38 @@
 import { Box, TextField, CssBaseline, Button, Container, Link, Avatar, Typography } from '@mui/material'
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined"
 import { useSelector, useDispatch } from 'react-redux'
-import { changeEmail, changePassword } from '../redux/authSlice'
+import { changeEmail, changePassword, login } from '../redux/authSlice'
 
 const SignIn = () => {
 
   const email = useSelector((state) => state.auth.email)
   const password = useSelector((state) => state.auth.password)
 
+  const error = useSelector((state) => state.auth.error)
+
   const dispatch = useDispatch()
 
   const handleEmailChange = (e) => {dispatch(changeEmail(e.currentTarget.value))}
   const handlePasswordChange = (e) => {dispatch(changePassword(e.currentTarget.value))}
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    dispatch(login({email, password}))
+  }
   return (
     <>
     <CssBaseline />
     <Container maxWidth="xs">
     <Box
       component="form"
+      onSubmit={handleSubmit}
       sx={{mt: 4}}
     >
       <Avatar sx={{ mx:"auto", bgcolor:"#589a9f"}}>
         <LockOutlinedIcon />
       </Avatar>
       <Typography variant="h5" sx={{textAlign: "center"}}>Sign In</Typography>
+      {error && <Typography sx={{textAlign: "center", color:"error.main"}}>{error}</Typography>}
       <TextField 
         fullWidth 
         margin="normal" 
