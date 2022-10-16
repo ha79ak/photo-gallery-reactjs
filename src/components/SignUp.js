@@ -1,20 +1,20 @@
 import { Box, TextField, CssBaseline, Button, Container, Link, Avatar, Typography } from '@mui/material'
-import React, { useEffect } from 'react'
-import { signUp } from '../firebase/signInAndSignUp'
-
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined"
+import { useSelector, useDispatch } from 'react-redux'
+import { changeName, changeEmail, changePassword } from '../redux/authSlice'
 
 const SignUp = () => {
+  
+  const name = useSelector((state) => state.auth.name)
+  const email = useSelector((state) => state.auth.email)
+  const password = useSelector((state) => state.auth.password)
 
-    // useEffect(() => {
-    //     signUp("Hakan", "ha79ak@gmail.com", "hEllo1!World")
-    //     .then(() => {
-    //         console.log("Kullanici hesap acti")
-    //     })
-    //     .catch((e) => {
-    //         console.log("Hata!.. ", (e));
-    //     })
-    // }, [])
+  const dispatch = useDispatch()
+
+  const handleNameChange = (e) => {dispatch(changeName(e.currentTarget.value))}
+  const handleEmailChange = (e) => {dispatch(changeEmail(e.currentTarget.value))}
+  const handlePasswordChange = (e) => {dispatch(changePassword(e.currentTarget.value))}
+
   return (
     <>
     <CssBaseline />
@@ -34,19 +34,25 @@ const SignUp = () => {
         required 
         autoComplete="name" 
         autoFocus
+        value={name}
+        onChange={handleNameChange}
       />
       <TextField 
         fullWidth 
         margin="normal" 
         label="Email" 
-        required 
+        required
+        value={email}
+        onChange={handleEmailChange}
       />
       <TextField 
         fullWidth 
         margin="normal" 
         label="Password" 
         required 
-        type="password" 
+        type="password"
+        value={password}
+        onChange={handlePasswordChange}
       />
       <Button 
         type='Submit' 
