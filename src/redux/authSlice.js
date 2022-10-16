@@ -6,6 +6,7 @@ const initialState = {
     email: "",
     password: "",
 
+    isLoading: false,
     error: null,
 }
 
@@ -54,11 +55,25 @@ const authSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(register.rejected, (state, action) => {
-                state.error = action.payload;
+        .addCase(register.pending, (state) => {
+            state.isLoading = true
         })
-            .addCase(login.rejected, (state, action) => {
-                state.error = action.payload;
+        .addCase(register.fulfilled, state => {
+            state.isLoading = false
+        })
+        .addCase(register.rejected, (state, action) => {
+            state.error = action.payload;
+            state.isLoading = false
+        })
+        .addCase(login.pending, (state) => {
+            state.isLoading = true
+        })
+        .addCase(login.fulfilled, state => {
+            state.isLoading = false
+        })
+        .addCase(login.rejected, (state, action) => {
+            state.error = action.payload;
+            state.isLoading = false
         })
     }
 })

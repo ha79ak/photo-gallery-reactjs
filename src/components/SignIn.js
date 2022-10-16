@@ -8,6 +8,7 @@ const SignIn = () => {
   const email = useSelector((state) => state.auth.email)
   const password = useSelector((state) => state.auth.password)
 
+  const isLoading = useSelector((state) => state.auth.isLoading)
   const error = useSelector((state) => state.auth.error)
 
   const dispatch = useDispatch()
@@ -57,7 +58,7 @@ const SignIn = () => {
         variant="contained" 
         fullWidth 
         sx={{mt: 2, bgcolor:"#589a9f", "&:hover": {backgroundColor: '#efb6b2'}}}
-      >Sign In
+      >{isLoading ? "Loading..." : "Sign In"}
       </Button>
     <Box 
       sx={{
