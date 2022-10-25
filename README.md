@@ -1,4 +1,4 @@
-PHOTO GALLERY WEBSITE
+### PHOTO GALLERY WEBSITE
 
 # Getting Started with Create React App
 
